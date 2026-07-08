@@ -33,7 +33,7 @@ def create():
                 filename = secure_filename(file.filename)
                 save_folder = os.path.join(app.config['UPLOAD_FOLDER'], str(rec_id))
                 if(not(os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'], rec_id)))):
-                    os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'], rec_id))
+                    os.makedirs(os.path.join(app.config['UPLOAD_FOLDER'], rec_id), exist_ok=True)
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], rec_id,  filename))
                 input_files.append(file.filename)
             # Capture the description and save it to a file
